@@ -1,16 +1,13 @@
 *Github API Wrapper*
 =================================================
 -------------------------------------------------
-A minimal PHP wrapper created for making interaction 
-with the Github API(v3) easy and predictable.
+A minimal PHP wrapper created for making interaction with the Github API(v3) easy and predictable.
 
 http://developer.github.com/v3/
 
 *OAuth Authentication*
 -------------------------------------------------
-You'll need a Github application set up first. Get the 
-Client ID and Client Secret from your application's 
-settings page.
+You'll need a Github application set up first. Get the Client ID and Client Secret from your application's settings page.
 
 Example authentication:
 <pre>
@@ -21,12 +18,10 @@ $github = new GithubOAuth($clientD,$clientSecret);
 
 // Scope of permissions requested
 $scope = array('user','repo','gist');
-// Requests access & redirects to the URL defined in 
-// your Github application's settings
+// Requests access & redirects to the URL defined in your Github application's settings
 $github->requestAccessCode($scope);
 
-// Retrieve access code from URL after redirect, and 
-// exchange for access token 
+// Retrieve access code from URL after redirect, and exchange for access token
 $github->setTokenFromCode($_GET['code']);
 </pre>
 
@@ -35,9 +30,9 @@ $github->setTokenFromCode($_GET['code']);
 -------------------------------------------------
 Use the API documentation as a reference.  There are primarily 2 or 3 parts to each request:
 <ul> 
-    <li><b>HTTP Verb</b> ... <i>See http://developer.github.com/v3/#http-verbs</i></li>
-    <li><b>Path</b> ... <i>E.g. For http://api.github.com/user/repos, the path is <code>'user/repos'</code></i></li>
-    <li><b>URL Parameters</b> ... <i>E.g. <code>$urlParams = array( 'name'=>'somename', 'something'=>'else' );</code></i></li>
+    <li><b>HTTP Verb</b> ... See http://developer.github.com/v3/#http-verbs</li>
+    <li><b>Path</b> ... E.g. For <code>http://api.github.com/user/repos</code>, the path is <code>'user/repos'</code></li>
+    <li><b>URL Parameters</b> ... E.g. <code>array('foo'=>'bar','herp'=>'derp');</code> becomes <code>foo=bar&herp=derp</code></li>
 </ul> 
 
 
