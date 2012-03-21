@@ -14,7 +14,6 @@
     class HTTP
     {
         public static function webRequest( $HTTPVerb, $url, array $urlParams = array() ) {
-            $c = curl_init();
             switch( strtoupper( $HTTPVerb ) ) {
                 case HTTPVerbs::HEAD:
                     return HTTP::httpHEAD( $c, $url, $urlParams );
@@ -35,6 +34,7 @@
 
         // Can be issued against any resource to get just the HTTP header info.
         private static function httpHEAD( $c, $url, $urlParams ) {
+            $c = curl_init();
             curl_setopt( $c, CURLOPT_URL, $url );
             curl_setopt( $c, CURLOPT_HEADER, 1 );
             curl_setopt( $c, CURLOPT_NOBODY, 1 );
@@ -47,6 +47,7 @@
 
         // Used for retrieving resources.
         private static function  httpGET( $c, $url, $urlParams ) {
+            $c = curl_init();
             $request = HTTP::buildRequest( $url, $urlParams );
             curl_setopt( $c, CURLOPT_URL, $request );
             curl_setopt( $c, CURLOPT_RETURNTRANSFER, true );
@@ -58,6 +59,7 @@
 
         // Used for creating resources, or performing custom actions (such as merging a pull request).
         private static function  httpPOST( $c, $url, $urlParams ) {
+            $c = curl_init();
             $requestingToken = $url == GithubOAuth::urlAccessToken;
             curl_setopt( $c, CURLOPT_URL, $url );
             curl_setopt( $c, CURLOPT_POST, 1 );
@@ -76,6 +78,7 @@
         // body attributes. A PATCH request may accept one or more of the attributes to update the resource.
         // PATCH is a relatively new and uncommon HTTP verb, so resource endpoints also accept POST requests.
         private static function  httpPATCH( $c, $url, $urlParams ) {
+            $c = curl_init();
             curl_setopt( $c, CURLOPT_URL, $url );
             curl_setopt( $c, CURLOPT_HEADER, false );
             curl_setopt( $c, CURLOPT_CUSTOMREQUEST, 'PATCH' );
@@ -89,6 +92,7 @@
 
         // Used for replacing resources or collections.
         private static function  httpPUT( $c, $url, $urlParams ) {
+            $c = curl_init();
             $putString = stripslashes( json_encode( $urlParams ) );
             $data = tmpfile();
             fwrite( $data, $putString );
@@ -107,6 +111,7 @@
 
         // Used for deleting resources.
         private static function  httpDELETE( $c, $url, $urlParams ) {
+            $c = curl_init();
             curl_setopt( $c, CURLOPT_URL, $url );
             curl_setopt( $c, CURLOPT_POSTFIELDS, json_encode( $urlParams ) );
             curl_setopt( $c, CURLOPT_FOLLOWLOCATION, 1 );
