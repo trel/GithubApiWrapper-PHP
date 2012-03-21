@@ -12,17 +12,17 @@ You'll need a Github application set up first. Get the Client ID and Client Secr
 Example authentication:
 <pre>
 // ID & Secret shown on your Github app's page.
-$clientID = '[YOUR_CLIENT_ID]';
-$clientSecret = '[YOUR_CLIENT_SECRET]';
-$github = new GithubOAuth($clientD,$clientSecret);
+$clientID = 'YOUR_CLIENT_ID';
+$clientSecret = 'YOUR_CLIENT_SECRET';
+$github = new GithubOAuth( $clientD, $clientSecret );
 
 // Scope of permissions requested
-$scope = array('user','repo','gist');
+$scope = array( 'user', 'repo', 'gist' );
 // Requests access & redirects to the URL defined in your Github application's settings
-$github->requestAccessCode($scope);
+$github->requestAccessCode( $scope );
 
 // Retrieve access code from URL after redirect, and exchange for access token
-$github->setTokenFromCode($_GET['code']);
+$github->setTokenFromCode( $_GET['code'] );
 </pre>
 
 *Making Requests*
@@ -32,14 +32,14 @@ Use the API documentation as a reference.  There are primarily 2 or 3 parts to e
 <ul> 
     <li><b>HTTP Verb</b> ... See http://developer.github.com/v3/#http-verbs</li>
     <li><b>Path</b> ... E.g. For <code>http://api.github.com/user/repos</code>, the path is <code>'user/repos'</code></li>
-    <li><b>URL Parameters</b> ... E.g. <code>array('foo'=>'bar','herp'=>'derp');</code> becomes <code>foo=bar&herp=derp</code></li>
+    <li><b>URL Parameters</b> ... E.g. <code>array( 'foo'=>'bar', 'herp'=>'derp' );</code> becomes <code>foo=bar&herp=derp</code></li>
 </ul> 
 
 
 *Example Request for Authenticated User's Data*
 -------------------------------------------------
 <pre>
-$response = $github->executeRequest('GET','user');
+$response = $github->executeRequest( 'GET', 'user' );
 </pre>
 <h4>The response...</h4>
 <pre>
