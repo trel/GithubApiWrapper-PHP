@@ -1,6 +1,9 @@
 <?php
 
-    class GithubOAuth extends HTTP
+    require_once('http.class.php');
+
+
+    class GithubOAuth
     {
         const BaseURL = 'https://api.github.com';
         const CACert = '/certs/DigiCertHighAssuranceEVRootCA.crt';
@@ -13,7 +16,7 @@
 
         public function __construct( $client_id, $client_secret ) {
             if( empty( $client_id ) ) throw new Exception( "Parameter 'client_id' was empty." );
-            $this->client_id = $client_id;
+            $this->client_id = $client_id; 
 
             if( empty( $client_secret ) ) throw new Exception( "Parameter 'client_secret' was empty." );
             $this->client_secret = $client_secret;
