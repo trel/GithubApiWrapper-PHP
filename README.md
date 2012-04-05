@@ -14,7 +14,7 @@ Example authentication:
 // ID & Secret shown on your Github app's page.
 $clientID = 'YOUR_CLIENT_ID';
 $clientSecret = 'YOUR_CLIENT_SECRET';
-$github = new GithubOAuth( $clientD, $clientSecret );
+$github = new GithubOAuth( $clientID, $clientSecret );
 
 // Scope of permissions requested
 $scope = array( 'user', 'repo', 'gist' );
