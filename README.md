@@ -7,7 +7,7 @@ http://developer.github.com/v3/
 
 *OAuth Authentication*
 -------------------------------------------------
-You'll need a Github application set up first. Get the Client ID and Client Secret from your application's settings page.
+You need a Github application set up first. Get the Client ID and Client Secret from your application's settings page.
 
 Example authentication:
 <pre>
