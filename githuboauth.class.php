@@ -2,11 +2,9 @@
 
     require_once('http.class.php');
 
-
     class GithubOAuth
     {
         const BaseURL = 'https://api.github.com';
-        const CACert = '/certs/DigiCertHighAssuranceEVRootCA.crt';
         const urlAuthorize = 'https://github.com/login/oauth/authorize';
         const urlAccessToken = 'https://github.com/login/oauth/access_token';
 
@@ -66,7 +64,7 @@
             $url = GithubOAuth::BaseURL;
             $url .= ( $path[0] == '/' ) ? "{$path}" : "/{$path}";
 
-            if( $HTTPVerb == 'POST' || $HTTPVerb == 'PATCH' || $HTTPVerb == 'PUT' ) {
+            if( $HTTPVerb == 'POST' || $HTTPVerb == 'PATCH' || $HTTPVerb == 'PUT' || $HTTPVerb == 'DELETE') {
                 $url .= '?access_token=' . $this->access_token;
                 return HTTP::webRequest( $HTTPVerb, $url, $urlParams );
             } else {
