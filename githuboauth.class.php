@@ -68,8 +68,11 @@
                 $url .= '?access_token=' . $this->access_token;
                 return HTTP::webRequest( $HTTPVerb, $url, $urlParams );
             } else {
-                if( empty( $urlParams['access_token'] ) )
-                    $urlParams['access_token'] = $this->access_token;
+                if( empty( $urlParams['access_token'] ) ) {
+                    if( $this->access_token ) {
+                        $urlParams['access_token'] = $this->access_token;
+                    }
+                }
                 return HTTP::webRequest( $HTTPVerb, $url, $urlParams );
             }
         }
